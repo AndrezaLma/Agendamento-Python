@@ -1,30 +1,31 @@
+# main.py
 import agendamento
 
-def menu_principal():
+def menu():
     while True:
-        print("\nSistema de Agendamentos\n")
-        print("1. Agendar nova consulta")
-        print("2. Listar todas as agendamentos")
-        print("3. Pesquisar agendamentos por data")
-        print("4. Sair")
-        escolha = input("Escolha uma opção: ")
+        print("\nSistema de Agendamento \n")
+        print("1 - Agendar novo horario")
+        print("2 - Listar consultas")
+        print("3 - Pesquisar consultas por data")
+        print("4 - Sair")
+        opcao = input("Escolha uma opção: ")
 
-        if escolha == '1':
+        if opcao == '1':
             data = input("Data: ")
             hora = input("Hora: ")
-            cliente = input("Nome do cliente : ")
+            cliente = input("Nome do cliente: ")
             advo = input("Nome do Advogado: ")
-            print(agendamento.adicionar_agendamento(data, hora, cliente, advo))
-        elif escolha == '2':
-            agendamento.listar_agendamento()
-        elif escolha == '3':
-            data_pesquisa = input("Data para pesquisa: ")
-            agendamento.pesquisar_agendamento(data_pesquisa)
-        elif escolha == '4':
-            print("Saindo do sistema.")
+            agendamento.adicionar_consulta(data, hora, cliente, advo)
+        elif opcao == '2':
+            agendamento.listar_consultas()
+        elif opcao == '3':
+            data = input("Informe a data para pesquisa: ")
+            agendamento.pesquisar_consultas_por_data(data)
+        elif opcao == '4':
+            print("Saindo...")
             break
         else:
-            print("Opção inválida. Tente novamente.")
+            print("Opção inválida.")
 
-if __name__ == "__main__":
-    menu_principal()
+if __name__ == '__main__':
+    menu()

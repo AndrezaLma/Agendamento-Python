@@ -1,24 +1,18 @@
-agendamento = []
+from config import config
 
-def adicionar_agendamento(data, hora, cliente, advo):
-    consulta = {
-        'data': data,
-        'hora': hora,
-        'cliente': cliente,
-        'advo': advo
-    }
-    agendamento.append(consulta)
-    return "Agendamento feito com sucesso."
+sheet = config()
 
-def listar_agendamento():
-    if not agendamento:
-        return "Nenhuma consulta agendada."
-    for consulta in agendamento:
-        print(f"Data: {consulta['data']}, Hora: {consulta['hora']}, cliente: {consulta['cliente']}, Médico: {consulta['advo']}")
+def adicionar_consulta(data, hora, cliente, advo):
+    sheet.append_row([data, hora, cliente, advo])
+    print("Consulta adicionada com sucesso.")
 
-def pesquisar_agendamento(data_pesquisa):
-    agendamento_filtradas = [consulta for consulta in agendamento if consulta['data'] == data_pesquisa]
-    if not agendamento_filtradas:
-        return "Nenhuma consulta encontrada para esta data."
-    for consulta in agendamento_filtradas:
-        print(f"Data: {consulta['data']}, Hora: {consulta['hora']}, cliente: {consulta['cliente']}, Médico: {consulta['advo']}")
+def listar_consultas():
+    consultas = sheet.get_all_records()
+    for consulta in consultas:
+        print(consulta)
+
+def pesquisar_consultas_por_data(data):
+    consultas = sheet.get_all_values()
+    for consulta in consultas:
+        if consulta[0] == data:
+            print(consulta)
