@@ -1,6 +1,7 @@
 # main.py
 import agendamento
 
+
 def menu():
     while True:
         print("\nSistema de Agendamento \n")
@@ -26,6 +27,7 @@ def menu():
             break
         else:
             print("Opção inválida.")
+
 
 if __name__ == '__main__':
     menu()
